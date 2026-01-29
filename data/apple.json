@@ -1,0 +1,38 @@
+[
+    {
+        "Title" : "Apple iPhone 16 (Blue, 128 GB)",
+        "Price" : "65,000",
+        "Features": [
+            "128 GB ROM",
+            "15.49 cm(1.6 inch) Super Letina XR Display",
+            "12MP + 12MP | 12MP Front Camera",
+            "A15 Bionic Chip, 6 core processor",
+            "1 Year warranty for Phone and 6 months warranty for In Box Accessories"
+        ],
+        "Ratings": {
+                    "Rate" : 4.5, 
+                    "Count": "55,017 Ratings",
+                    "Review" : "10,701 Reviews"
+                    },
+        "Photo" : "../public/images/iphone16.png"
+    },
+
+    {
+        "Title" : "Apple iPhone 15 (Blue, 128 GB)",
+        "Price" : "57,999",
+        "Features": [
+            "128 GB ROM",
+            "15.49 cm(1.6 inch) Super Letina XR Display",
+            "12MP + 12MP | 12MP Front Camera",
+            "A15 Bionic Chip, 6 core processor",
+            "1 Year warranty for Phone and 6 months warranty for In Box Accessories"
+        ],
+        "Ratings": {
+                    "Rate" : 4.6, 
+                    "Count": "24,017 Ratings",
+                    "Review" : "8,701 Reviews"
+                    },    
+        "Photo" : "../public/images/iphone15.png"
+    }
+
+]

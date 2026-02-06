@@ -13,7 +13,8 @@ body {
 :root{
     /* Background Colors */
     --bg-primary-color : #0c0c0c;
-    
+    --bg-fill-color : #fdfdfc;
+    --bg-food-color :#ff3b3b;
     
     /* Text colors */
     --text-primary-color : #f0f0f0;
@@ -92,5 +93,9 @@ section .infos{
 }
 
 .fill{
-    background-color: #fdfdfc;
+    background-color: var(--bg-fill-color);
+}
+.food{
+
+    background-color: var(--bg-food-color);
 }

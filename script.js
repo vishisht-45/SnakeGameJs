@@ -1,19 +1,29 @@
-
-
 const board = document.querySelector(".board");
+const startBtn = document.querySelector(".btn-start");
+const restartBtn = document.querySelector(".btn-restart");
+const modal = document.querySelector(".modal");
+const startGameModal = document.querySelector(".start-game");
+const restartGameModal = document.querySelector(".restart-game");
+
+
+const highScoreElement = document.querySelector("#high-score")
+const scoreElement = document.querySelector("#score")
+const timeElement = document.querySelector("#time")
+
+
 const blockHeight = 50;
 const blockWidth = 50;
+
+let highScore = 0;
+let score = 0;
+let time = `00-00`
 
 const cols = Math.floor(board.clientWidth/blockWidth);
 const rows = Math.floor(board.clientHeight/blockHeight);
 
 const blocks = [];
-const snake = [{
+let snake = [{
     x:1 , y:3
-},{
-    x:1 , y:4
-},{
-    x:1 , y:5
 }]
 
 let food = {x:Math.floor(Math.random()*rows), y:Math.floor(Math.random()*cols)};
@@ -48,11 +58,19 @@ function render(){
         head = { x: snake[0].x-1 , y: snake[0].y}
     }
 
+    //wall collision logic
     if(head.x < 0 || head.x >=rows || head.y < 0 || head.y >= cols ){
-        alert("Game over");
+        
+        startGameModal.style.display="none";
+        restartGameModal.style.display="flex";
+        modal.style.display="flex";
+
         clearInterval(intervalId)
+        intervalId = null;
+        return;
     }
 
+    //food consume logic
     if(head.x==food.x && head.y==food.y){
         blocks[`${food.x}-${food.y}`].classList.remove("food");
         food = {
@@ -77,15 +95,28 @@ function clearSnake() {
     });
 }
 
-render();
+function restartGame(){
+    blocks[`${food.x}-${food.y}`].classList.remove("food");
+    clearSnake();
+    direction="down";
+    modal.style.display="none";
+    snake = [{x:1 , y:3}]
+    food = {
+        x:Math.floor(Math.random()*rows), y:Math.floor(Math.random()*cols)
+    };
+    intervalId = setInterval(()=>{render();},200);
 
-intervalId = setInterval(()=>{
+}
 
-    render();
-
-},200);
+restartBtn.addEventListener("click",restartGame)
 
 
+startBtn.addEventListener("click",()=>{
+    clearInterval(intervalId);  
+    intervalId = null;
+    modal.style.display = "none";
+    intervalId = setInterval(()=>{render();},200);
+})
 
 addEventListener("keydown",(event)=>{
     

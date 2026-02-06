@@ -108,6 +108,7 @@ function clearSnake() {
 function restartGame(){
     score = 0;
     time=`00-00`
+    direction="down"
     scoreElement.innerHTML= score;
     timeElement.innerHTML=time;
     highScoreElement.innerHTML= highScore;

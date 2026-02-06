@@ -14,10 +14,11 @@ const timeElement = document.querySelector("#time")
 const blockHeight = 50;
 const blockWidth = 50;
 
-let highScore = 0;
+let highScore = localStorage.getItem("highScore") || 0;
 let score = 0;
 let time = `00-00`
 
+highScoreElement.innerHTML=highScore;
 const cols = Math.floor(board.clientWidth/blockWidth);
 const rows = Math.floor(board.clientHeight/blockHeight);
 
@@ -78,6 +79,13 @@ function render(){
         };
         blocks[`${food.x}-${food.y}`].classList.add("food");
         snake.unshift(head);
+
+        score +=10;
+        scoreElement.innerHTML=score;
+        if(score > highScore){
+            highScore = score;
+            localStorage.setItem("highScore",highScore.toString())
+        }
     }
     
     clearSnake();
@@ -96,6 +104,13 @@ function clearSnake() {
 }
 
 function restartGame(){
+    score = 0;
+    time=`00-00`
+    scoreElement.innerHTML= score;
+    timeElement.innerHTML=time;
+    highScoreElement.innerHTML= highScore;
+
+
     blocks[`${food.x}-${food.y}`].classList.remove("food");
     clearSnake();
     direction="down";

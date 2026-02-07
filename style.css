@@ -74,7 +74,7 @@ section{
 
 }
 .btn:hover{
-    transform: scale(1.1s);
+    transform: scale(1.1);
 }
 
 section .infos{
